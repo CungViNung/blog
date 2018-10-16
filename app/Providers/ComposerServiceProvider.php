@@ -17,6 +17,7 @@ class ComposerServiceProvider extends ServiceProvider
         //
         View::composer('frontend.partials.aside', 'App\Http\ViewComposer\PostComposer');
         View::composer('frontend.partials.aside', 'App\Http\ViewComposer\CategoryComposer');
+        View::composer('frontend.partials.header', 'App\Http\ViewComposer\MenuComposer');
     }
 
     /**

@@ -11,8 +11,7 @@
 |
 */
 Route::get('test', function(){
-    $cate = App\Models\Category::whereIn('id', [7, 9, 10])->get();
-    dd($cate);
+    $cate = App\Models\Category::whereIn('id', [12, 13, 14])->get();
 });
 Route::group(['prefix'=>'/'], function(){
     Route::get('', 'FrontendController@getIndex')->name('index');

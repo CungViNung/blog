@@ -13,7 +13,7 @@
 					<?php $news = $posts->sortByDesc('created_at')->take(3);
 						  $new1 = $news->shift();
 					?>
-					<div class="post post-thumb">
+					<div class="post post-thumb to">
 						<a class="post-img" href="{{route('post-detail', ['id'=>$new1->id, 'slug'=>$new1->slug])}}"><img src="{{asset('upload/post/'.$new1->feature_image)}}" alt=""></a>
 						<div class="post-body">
 							<div class="post-category">
@@ -31,7 +31,7 @@
 				<div class="col-md-4 hot-post-right">
 					<!-- post -->
 					@foreach($news as $new)
-					<div class="post post-thumb">
+					<div class="post post-thumb nho">
 						<a class="post-img" href="{{route('post-detail', ['id'=>$new->id, 'slug'=>$new->slug])}}"><img src="{{asset('upload/post/'.$new->feature_image)}}" alt=""></a>
 						<div class="post-body">
 							<div class="post-category">

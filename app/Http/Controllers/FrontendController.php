@@ -57,4 +57,5 @@ class FrontendController extends Controller
     public function getContact() {
         return view('frontend.pages.contact');
     }
+    
 }
