@@ -33,7 +33,7 @@
                     <option value="{{ $cate->id }}" @if($posts->category_id == $cate->id) selected @endif >{{ $cate->name }}</option>
                 @endforeach
               </select>
-            </div>
+            </div> 
             <div class="form-group">
               <label>Tóm Tắt</label>
             <textarea name="description" class="form-control" rows="3">{{$posts->description}}</textarea>

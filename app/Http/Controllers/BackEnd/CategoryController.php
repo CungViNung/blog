@@ -20,6 +20,7 @@ class CategoryController extends Controller
         $category->name = $request->name;
         $category->slug = str_slug($request->name);
         $category->thumbnail = $fileName;
+        $category->parent = $request->parent;
         $category->save();
         $request->thumbnail->move('upload/', $fileName);
         return back()->with('success', 'Thêm danh mục thành công');
@@ -34,6 +35,7 @@ class CategoryController extends Controller
         $category = Category::find($id);
         $category->name = $request->name;
         $category->slug = str_slug($request->name);
+        $category->parent = $request->parent;
         if($request->hasFile('thumbnail')){
             $thumb = $request->thumbnail->getClientOriginalName();
             $category->thumbnail = $thumb;

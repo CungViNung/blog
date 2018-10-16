@@ -38,6 +38,15 @@
                       <label for="exampleInputFile">Tải thumbnail</label>
                       <input type="file" name="thumbnail" id="exampleInputFile">
                     </div>
+                    <div class="form-group">
+                      <label>Danh mục cha</label>
+                      <?php $cates = App\Models\Category::all(); ?>
+                      <select class="form-control" name="parent">
+                        @foreach($cates as $cate)
+                            <option value="{{ $cate->id }}">{{ $cate->name }}</option>
+                        @endforeach
+                      </select>
+                    </div>
                   </div>
                   <!-- /.box-body -->
                   <div class="box-footer">
@@ -60,7 +69,7 @@
                   <th width="10%">Thumbnail</th>
                   <th width="30%">Tên danh mục</th>
                   <th width="30%">Slug</th>
-                  <th width="10%">Số bài viết</th>
+                  <th width="10%">Bài viết</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -70,7 +79,7 @@
                   <td><a href="{{route('edit-cate',['id'=>$cate->id])}}"><img src="{{asset('upload/'.$cate->thumbnail)}}" width="114px" height="72px" alt="Image"></a></td>
                   <td><a href="{{route('edit-cate',['id'=>$cate->id])}}">{{$cate->name}}</a></td>
                   <td>{{$cate->slug}}</td>
-                  <td></td>
+                  <td>{{$cate->posts->count()}}</td>
                 </tr>
                 @endforeach
                 </tbody>
@@ -80,7 +89,7 @@
                   <th width="10%">Thumbnail</th>
                   <th width="30%">Tên danh mục</th>
                   <th width="30%">Slug</th>
-                  <th width="10%">Số bài viết</th>
+                  <th width="10%">Bài viết</th>
                 </tr>
                 </tfoot>
               </table>

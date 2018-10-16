@@ -38,6 +38,15 @@
                       <input type="text" class="form-control" id="slugCate" value="{{$category->slug}}">
                     </div>
                     <div class="form-group">
+                      <label>Danh mục cha</label>
+                      <select class="form-control" name="parent">
+                        <?php $cates = App\Models\Category::all(); ?>
+                        @foreach($cates as $cate)
+                            <option value="{{ $cate->id }}" @if($category->parent == $cate->id) selected @endif>{{ $cate->name }}</option>
+                        @endforeach
+                      </select>
+                    </div>
+                    <div class="form-group">
                       <label>Thumbnail</label>
                         <img id="avatar" class="img-responsive" name="thumbnail" src="{{asset('upload/'.$category->thumbnail)}}" alt="">
                         <input id="img" type="file" name="thumbnail" class="form-control hidden" onchange="changeImg(this)">

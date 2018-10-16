@@ -11,7 +11,9 @@
 |
 */
 Route::get('test', function(){
-    $cate = App\Models\Category::whereIn('id', [12, 13, 14])->get();
+    $cate = App\Models\Category::with('child')->where('parent', '>', 0)->get();
+    dd($cate);
+
 });
 Route::group(['prefix'=>'/'], function(){
     Route::get('', 'FrontendController@getIndex')->name('index');
@@ -19,7 +21,6 @@ Route::group(['prefix'=>'/'], function(){
     Route::get('post/{id}/{slug}', 'FrontendController@getPostDetail')->name('post-detail'); 
     Route::post('post/{id}/{slug}', 'FrontendController@postComment');
     Route::get('author/{id}', 'FrontendController@getAuthor')->name('author'); 
-    
     Route::get('contact', 'FrontendController@getContact')->name('contact');
 });
 
@@ -28,6 +29,11 @@ Route::group(['namespace'=>'BackEnd'], function(){
     Route::group(['prefix'=>'login', 'middleware'=>'CheckLogin'], function() {
         Route::get('/', 'LoginController@getLogin')->name('login');
         Route::post('/', 'LoginController@postLogin');
+    });
+    //Register
+    Route::group(['prefix'=>'register'], function() {
+        Route::get('/', 'RegisterController@getRegister')->name('register');
+        Route::post('/', 'RegisterController@postRegister');
     });
     //Logout
     Route::get('logout', 'HomeController@getLogout')->name('logout');
