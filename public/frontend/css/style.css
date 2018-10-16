@@ -843,7 +843,12 @@ textarea.input {
 /*----------------------------*\
 	post thumb
 \*----------------------------*/
-
+.to img {
+  height: 450px !important;
+}
+.nho img {
+  height: 222px;
+}
 .post.post-thumb .post-img:after {
   content: "";
   position: absolute;
@@ -865,7 +870,7 @@ textarea.input {
 }
 
 .post.post-thumb .post-title a {
-  color: #fff;
+  color: white;
 }
 
 .post.post-thumb .post-title a:hover, .post.post-thumb .post-title a:focus {
@@ -897,7 +902,9 @@ textarea.input {
 /*----------------------------*\
 	post widget
 \*----------------------------*/
-
+.post-widget img {
+  height: 115px;
+}
 .post.post-widget:after {
   content: "";
   display: table;

@@ -181,6 +181,7 @@
 								<a href="{{route('front-cate', ['id'=>$post->category->id, 'slug'=>$post->category->slug])}}">{{$post->category->name}}</a>
 							</div>
 							<h3 class="post-title"><a href="blog-post.html">{{$post->title}}</a></h3>
+							<p>{{date('F j, Y, H:i a', strtotime($post['created_at'])) }}</p>
 						</div>
 					</div>
 					@endforeach
