@@ -11,8 +11,7 @@
 |
 */
 Route::get('test', function(){
-    $cate = App\Models\Category::with('child')->where('parent', '>', 0)->get();
-    dd($cate);
+    return view('welcome');
 
 });
 Route::group(['prefix'=>'/'], function(){

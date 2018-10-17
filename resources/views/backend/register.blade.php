@@ -36,7 +36,7 @@
 
   <div class="register-box-body">
     <p class="login-box-msg">Register a new membership</p>
-
+    @include('notification.error')
     <form action="{{route('register')}}" method="post">
       <div class="form-group has-feedback">
         <input type="text" name="name" required class="form-control" placeholder="User name">
