@@ -20,6 +20,17 @@
                 <!-- /logo -->
 
                 <!-- search & aside toggle -->
+                @if(Auth::guest())
+                <div class="nav-btns">
+                    <a href="{{route('register')}}" class="btn btn-primary">Đăng ký</a>
+                    <a href="{{route('login')}}" class="btn btn-danger">Đăng nhập</a>
+                </div>
+                @else 
+                <div class="authorr">
+                    <a href="#"><img class="author-img" src="{{asset('upload/profile/'.Auth::user()->avatar)}}" /></a>
+                    <h3>Xin chào <a href="#">{{Auth::user()->name}}</a></h3>
+                </div>
+                @endif
                 <div class="nav-btns">
                     <button class="search-btn"><i class="fa fa-search"></i></button>
                     <div id="nav-search">

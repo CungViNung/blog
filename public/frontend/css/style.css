@@ -1090,7 +1090,19 @@ textarea.input {
 /*----------------------------*\
 	author
 \*----------------------------*/
+.authorr {
+  float: right;
+  padding: 15px 0;
 
+}
+.authorr img {
+  width: 40px;
+  border-radius: 50%;
+}
+.authorr h3 {
+  font-size: 13px;
+  display: inline-block;
+}
 .author.media .media-left {
   position: relative;
   padding-right: 30px;
@@ -1182,7 +1194,7 @@ textarea.input {
 .post-comments .media .reply:hover {
   opacity: 0.9;
 }
-
+ 
 .post-comments .media.media-author .media-heading h4 {
   color: #ee4266;
 }
