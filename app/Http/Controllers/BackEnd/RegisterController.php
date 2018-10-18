@@ -33,11 +33,12 @@ class RegisterController extends Controller
         if($validator->fails()) {
             return back()->withErrors($validator);
         }else {
+            $avatar = 'df.png';
             $user = new User;
             $user->name = $request->name;
             $user->email = $request->email;
             $user->password = bcrypt($request->password);
-            $user->avatar = 'df.png';
+            $user->avatar = $avatar;
             $user->save();
             return redirect()->route('profile');
         }
