@@ -44,9 +44,9 @@
                 {{-- //foreach --}}
                 @foreach($posts as $post)
                 <tr class="@switch($post->status)
-                    @case(1) {{'br-primary'}} @break; 
-                    @case(2) {{'br-danger'}} @break;
-                    @case(3) {{'br-success'}} @break;    
+                    @case(1) {{'bg-warning'}} @break; 
+                    @case(2) {{'bg-danger'}} @break;
+                    @case(3) {{'bg-success'}} @break;    
                 @endswitch">
                     <td>{{$post->id}}</td>
                     <td><a href="{{route('edit-post', ['id'=>$post->id])}}">{{$post->title}}</a></td>

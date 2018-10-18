@@ -10,6 +10,6 @@ class Tag extends Model
     protected $primaryKey = "id";
 
     public function post() {
-        return $this->belongsToMany('App\Models\Post', 'post_tag', 'post_id', 'tag_id');
+        return $this->belongsToMany('App\Models\Post', 'post_tag', 'post_id', 'tag_id')->withPivot('post_id', 'tag_id');
     }
 }

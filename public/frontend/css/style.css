@@ -1086,6 +1086,19 @@ textarea.input {
   display: table;
   clear: both;
 }
+/*----------------------------*\
+  User Dashboard
+  
+\*----------------------------*/
+.lol {
+  margin-top: 30px;
+}
+.user-tab {
+  margin-bottom: 40px;
+}
+.image-left {
+  background: #f1f1f1;
+}
 
 /*----------------------------*\
 	author

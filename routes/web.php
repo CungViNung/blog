@@ -11,7 +11,6 @@
 |
 */
 Route::get('test', function(){
-    return view('welcome');
 
 });
 Route::group(['prefix'=>'/'], function(){
@@ -21,6 +20,16 @@ Route::group(['prefix'=>'/'], function(){
     Route::post('post/{id}/{slug}', 'FrontendController@postComment');
     Route::get('author/{id}', 'FrontendController@getAuthor')->name('author'); 
     Route::get('contact', 'FrontendController@getContact')->name('contact');
+    
+    Route::middleware('auth')->group(function(){
+        Route::get('/profile', 'ProfileController@profile')->name('profile');
+        Route::post('/profile', 'ProfileController@editProfile');
+        Route::get('/add', 'ProfileController@getAddPost')->name('useradd-post');
+        Route::post('/add', 'ProfileController@postAddPost');
+        Route::get('/edit/{id}', 'ProfileController@getEdit')->name('useredit-post');
+        Route::post('/edit/{id}', 'ProfileController@postEdit');
+        Route::get('delete/{id}', 'ProfileController@getDelete')->name('userdelete-post');
+    });
 });
 
 Route::group(['namespace'=>'BackEnd'], function(){

@@ -18,6 +18,8 @@ class ComposerServiceProvider extends ServiceProvider
         View::composer('frontend.partials.aside', 'App\Http\ViewComposer\PostComposer');
         View::composer('frontend.partials.aside', 'App\Http\ViewComposer\CategoryComposer');
         View::composer('frontend.partials.header', 'App\Http\ViewComposer\MenuComposer');
+        View::composer('frontend.pages.dashboard', 'App\Http\ViewComposer\ProfileComposer');
+        View::composer('frontend.pages.adduserpost', 'App\Http\ViewComposer\AddPostComposer');
     }
 
     /**

@@ -12,7 +12,7 @@ use App\Models\{Post, Category};
 class HomeController extends Controller
 {
     public function getDashboard() {
-        $post = Post::all();
+        $post = Post::orderBy('id', 'desc')->get();
         $cate = Category::all();
         $user = User::all();
         return view('backend.index', compact('post', 'cate', 'user'));

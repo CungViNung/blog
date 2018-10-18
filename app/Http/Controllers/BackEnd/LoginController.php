@@ -24,7 +24,7 @@ class LoginController extends Controller
         if(Auth::attempt($admin, $remember)) {
             return redirect()->route('admin-panel');
         }elseif(Auth::attempt($author, $remember)) {
-            return redirect()->route('admin-panel');
+            return redirect()->route('index');
         }
         else {
             return back()->with('error', 'Tài khoản hoặc mật khẩu không đúng!');

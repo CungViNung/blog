@@ -18,7 +18,7 @@ class Post extends Model
     }
 
     public function tag() {
-        return $this->belongsToMany('App\Models\Tag', 'post_tag', 'post_id', 'tag_id');
+        return $this->belongsToMany('App\Models\Tag', 'post_tag', 'post_id', 'tag_id')->withPivot('post_id', 'tag_id');
     }
 
     public function comment() {

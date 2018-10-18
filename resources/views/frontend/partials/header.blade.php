@@ -27,8 +27,8 @@
                 </div>
                 @else 
                 <div class="authorr">
-                    <a href="#"><img class="author-img" src="{{asset('upload/profile/'.Auth::user()->avatar)}}" /></a>
-                    <h3>Xin chào <a href="#">{{Auth::user()->name}}</a></h3>
+                    <a href="{{route('profile')}}"><img class="author-img" src="{{asset('upload/profile/'.Auth::user()->avatar)}}" /></a>
+                    <h3>Xin chào <a href="{{route('profile')}}">{{Auth::user()->name}}</a></h3>
                 </div>
                 @endif
                 <div class="nav-btns">

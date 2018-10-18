@@ -100,7 +100,8 @@
                 <!-- /.box-header -->
                 <div class="box-body no-padding">
                   <ul class="users-list clearfix">
-                    @foreach($user as $us)
+                    <?php $users = $user->sortBy('id')->take(4); ?>
+                    @foreach($users as $us)
                       <li>
                         <img src="{{asset('upload/profile/'.$us->avatar)}}" alt="User Image">
                         <a class="users-list-name" href="{{route('user-detail', ['id'=>$us->id])}}">{{$us->name}}</a>
@@ -140,16 +141,21 @@
             <div class="box-body">
               <ul class="products-list product-list-in-box">
                 @foreach($post as $posts)
-                <li class="item">
+                <li class="item"> 
                   <div class="product-img">
                     <img style="width: 100px; height: 70px; padding-right: 10px;" src="{{asset('upload/post./'.$posts->feature_image)}}" alt="Product Image">
                   </div>
                   <div class="product-info">
                     <a href="{{route('edit-post',['id'=>$posts->id])}}" class="product-title">{{$posts->title}}
-                      <span class="label label-warning pull-right">@switch($posts->status)
-                          @case(1) {{'Chờ phê duyệt'}} @break; 
-                          @case(2) {{'Không phê duyệt'}} @break;
-                          @case(3) {{'Đã phê duyệt'}} @break;
+                      <span class="pull-right @switch($posts->status)
+                        @case(1) {{'label label-warning'}} @break
+                        @case(2) {{'label label-danger'}} @break
+                        @case(3) {{'label label-success'}} @break
+                        @endswitch">
+                      @switch($posts->status)
+                          @case(1) {{'Chờ phê duyệt'}} @break  
+                          @case(2) {{'Không phê duyệt'}} @break
+                          @case(3) {{'Đã phê duyệt'}} @break
                       @endswitch</span></a>
                   </div>
                 </li>
