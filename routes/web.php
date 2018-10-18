@@ -39,7 +39,7 @@ Route::group(['namespace'=>'BackEnd'], function(){
         Route::post('/', 'LoginController@postLogin');
     });
     //Register
-    Route::group(['prefix'=>'register'], function() {
+    Route::group(['prefix'=>'register', 'middleware'=>'CheckRegister'], function() {
         Route::get('/', 'RegisterController@getRegister')->name('register');
         Route::post('/', 'RegisterController@postRegister');
     });

@@ -100,10 +100,10 @@
                 <!-- /.box-header -->
                 <div class="box-body no-padding">
                   <ul class="users-list clearfix">
-                    <?php $users = $user->sortBy('id')->take(4); ?>
+                    <?php $users = $user->sortByDesc('id')->take(4); ?>
                     @foreach($users as $us)
                       <li>
-                        <img src="{{asset('upload/profile/'.$us->avatar)}}" alt="User Image">
+                        <img style="width: 100px; height: 100px;" src="{{asset('upload/profile/'.$us->avatar)}}" alt="User Image">
                         <a class="users-list-name" href="{{route('user-detail', ['id'=>$us->id])}}">{{$us->name}}</a>
                         <span class="users-list-date">{{$us->created_at}}</span>
                       </li>

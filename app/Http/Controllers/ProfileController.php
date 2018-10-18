@@ -39,7 +39,7 @@ class ProfileController extends Controller
                 $user->avatar = $img;
                 $request->img->move('upload/profile/', $img);
             }
-            $user->save();
+            $user->update();
             return redirect()->route('profile')->with('success', 'Chỉnh sửa thông tin thành công!');
         }
     }

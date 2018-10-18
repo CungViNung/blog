@@ -25,8 +25,8 @@
               <!-- Profile Image -->
               <div class="box box-primary">
                 <div class="box-body box-profile">
-                  <img id="avatar" class="profile-user-img img-responsive img-circle" style="width: 150px; position: relative;" name="img" src="dist/img/user4-128x128.jpg" alt="User profile picture">
-                  <input required id="img" type="file" name="img" class="form-control hidden" onchange="changeImg(this)">
+                  <img id="avatar" class="profile-user-img img-responsive img-circle" style="width: 150px; position: relative;" name="img" src="../../public/frontend/img/df.png" alt="User profile picture">
+                  <input id="img" type="file" name="img" class="form-control hidden" onchange="changeImg(this)">
                 </div>
                 <!-- /.box-body -->
               </div>

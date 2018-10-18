@@ -417,6 +417,10 @@ textarea.input {
   padding: 15px 25px;
 }
 
+.authorimg {
+  width: 40px;
+  height: 40px;
+}
 /*----------------------------*\
 	menu
 \*----------------------------*/
@@ -1098,6 +1102,16 @@ textarea.input {
 }
 .image-left {
   background: #f1f1f1;
+  text-align: center;
+  padding: 20px;
+}
+.profile-user-img {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto;
+}
+.profile_name {
+  margin-top: 20px;
 }
 
 /*----------------------------*\

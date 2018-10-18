@@ -22,8 +22,8 @@ class UserController extends Controller
         $fileName = $request->img->getClientOriginalName();
         $user = new User;
         $user->name = $request->name;
+        $user->avatar = $fileName;
         $user->email = $request->email;
-        $user->avatar = $fileName;  
         $user->password = bcrypt($request->password);
         $user->description = $request->description;
         $user->role = $request->role;
@@ -32,7 +32,7 @@ class UserController extends Controller
         return redirect()->route('user-panel')->with('success', 'Thêm tài khoản thành công');
     }  
         
-    public function userDetail($id) {
+    public function userDetail($id) { 
         $user = User::find($id);
         $posts = Post::where('user_id', $id)->get();
         return view('backend.profile', compact('user', 'posts'));

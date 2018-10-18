@@ -43,7 +43,7 @@
                 @foreach($users as $user)
                 <tr>
                   <td>{{$user->id}}</td>
-                  <td><a href="{{route('user-detail', ['id'=>$user->id])}}"><img src="{{asset('upload/profile/'.$user->avatar)}}" width="50px" class="img-circle" alt="User Image"></a></td>
+                  <td><a href="{{route('user-detail', ['id'=>$user->id])}}"><img style="width: 50px; height: 50px;" src="{{asset('upload/profile/'.$user->avatar)}}" width="50px" class="img-circle" alt="User Image"></a></td>
                   <td><a href="{{route('user-detail', ['id'=>$user->id])}}">{{$user->name}}</a></td>
                   <td>{{$user->email}}</td>
                   <td>{{$user->role}}</td>

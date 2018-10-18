@@ -24,9 +24,9 @@
           <div class="col-md-3">
 
             <!-- Profile Image -->
-            <div class="box box-primary">
+            <div class="box box-primary" style="text-align: center;">
                 <div class="box-body box-profile">
-                <img id="avatar" class="profile-user-img img-responsive img-circle" src="{{asset('upload/profile/'.$user->avatar)}}" alt="User profile picture">
+                <img style="width: 150px; height: 150px;" id="avatar" class="profile-user-img img-responsive img-circle" src="{{asset('upload/profile/'.$user->avatar)}}" alt="User profile picture">
                 <input required id="img" type="file" name="img" class="form-control hidden" onchange="changeImg(this)">
                 <h3 class="profile-username text-center">{{$user->name}}</h3>
                 <p class="text-muted text-center">{{$user->role}}</p>

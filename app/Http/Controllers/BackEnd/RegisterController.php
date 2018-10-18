@@ -37,8 +37,9 @@ class RegisterController extends Controller
             $user->name = $request->name;
             $user->email = $request->email;
             $user->password = bcrypt($request->password);
+            $user->avatar = 'df.png';
             $user->save();
-            return redirect()->route('index');
+            return redirect()->route('profile');
         }
         
     }

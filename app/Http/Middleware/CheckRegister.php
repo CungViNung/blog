@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Auth;
 
-class CheckLogin
+class CheckRegister
 {
     /**
      * Handle an incoming request.
@@ -15,14 +15,9 @@ class CheckLogin
      * @return mixed
      */
     public function handle($request, Closure $next)
-    {   
-        if(Auth::check()) {
-            if(Auth::user()->role == 'admin'){
-                return redirect()->route('admin-panel');
-            }else {
-                return redirect()->route('index');
-            }
-    
+    {
+        if(Auth::check() && Auth::user()->id == 'author') {
+            return redirect()->route('index');
         }
         return $next($request);
     }
