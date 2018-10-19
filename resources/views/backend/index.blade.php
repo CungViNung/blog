@@ -10,10 +10,6 @@
         Dashboard
         <small>Version 2.0</small>
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li>Dashboard</li>
-      </ol>
     </section>
 
     <!-- Main content -->
@@ -140,7 +136,8 @@
             <!-- /.box-header -->
             <div class="box-body">
               <ul class="products-list product-list-in-box">
-                @foreach($post as $posts)
+                <?php $post1 = $post->take(5); ?>
+                @foreach($post1 as $posts)
                 <li class="item"> 
                   <div class="product-img">
                     <img style="width: 100px; height: 70px; padding-right: 10px;" src="{{asset('upload/post./'.$posts->feature_image)}}" alt="Product Image">

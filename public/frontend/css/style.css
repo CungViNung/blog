@@ -169,6 +169,7 @@ figure>figcaption {
 
 .section-row {
   margin-bottom: 30px;
+  width: 100%;
 }
 
 .section-title {
@@ -1103,7 +1104,7 @@ textarea.input {
 .image-left {
   background: #f1f1f1;
   text-align: center;
-  padding: 20px;
+  padding: 20px; 
 }
 .profile-user-img {
   width: 150px;
@@ -1134,7 +1135,6 @@ textarea.input {
   position: relative;
   padding-right: 30px;
 }
-
 .author .author-img {
   width: 100px;
   border-radius: 50%;
@@ -1178,6 +1178,7 @@ textarea.input {
 
 .post-comments .media .media-left .media-object {
   width: 50px;
+  height: 50px;
   border-radius: 50%;
   position: relative;
   z-index: 20;
@@ -1299,7 +1300,7 @@ textarea.input {
   margin-bottom: 15px;
 }
 
-.newsletter-widget:after {
+/* .newsletter-widget:after {
   content: "\f003";
   font-family: FontAwesome;
   position: absolute;
@@ -1310,7 +1311,7 @@ textarea.input {
   -webkit-transform: rotate(13deg);
   -ms-transform: rotate(13deg);
   transform: rotate(13deg);
-}
+} */
 
 .footer-widget .newsletter-widget {
   padding: 0px;
@@ -1465,6 +1466,7 @@ textarea.input {
 .footer-nav li {
   display: inline-block;
   margin-right: 10px;
+  padding-left: 20px;
 }
 
 /*----------------------------*\
@@ -1576,4 +1578,11 @@ textarea.input {
     float: left;
     margin-left: 0px;
   }
+}
+
+.contentt img {
+  min-width: 200px;
+  max-width: 740px;
+  max-height: 1000px;
+  min-height: 200px;
 }

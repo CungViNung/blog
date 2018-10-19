@@ -9,11 +9,6 @@
       <h1>
         User Profile
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="{{route('admin-panel')}}"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="{{route('user-panel')}}">User list</a></li>
-        <li class="active">User profile</li>
-      </ol>
     </section>
 
     <!-- Main content -->

@@ -62,11 +62,11 @@
 							</div>
 						</div>
 						<!-- post -->
-						<?php $recent = $posts->sortByDesc('id')->take(6); ?>
+						<?php $recent = $posts->sortByDesc('id')->take(4); ?>
 						@foreach($recent as $rc)
 						<div class="col-md-6">
 							<div class="post">
-								<a class="post-img" href="{{route('post-detail', ['id'=>$rc->id, 'slug'=>$rc->slug])}}"><img src="{{asset('upload/post/'.$rc->feature_image)}}" alt=""></a>
+								<a class="post-img" href="{{route('post-detail', ['id'=>$rc->id, 'slug'=>$rc->slug])}}"><img height="250px" src="{{asset('upload/post/'.$rc->feature_image)}}" alt=""></a>
 								<div class="post-body">
 									<div class="post-category">
 										<a href="{{route('front-cate', ['id'=>$rc->category->id, 'slug'=>$rc->category->slug])}}">{{$rc->category->name}}</a>
@@ -100,7 +100,7 @@
 						@foreach($posts as $post)
 						<div class="col-md-4">
 							<div class="post post-sm">
-								<a class="post-img" href="{{route('post-detail', ['id'=>$post->id, 'slug'=>$post->slug])}}"><img src="{{asset('upload/post/'.$post->feature_image)}}" alt=""></a>
+								<a class="post-img" href="{{route('post-detail', ['id'=>$post->id, 'slug'=>$post->slug])}}"><img height="160px" src="{{asset('upload/post/'.$post->feature_image)}}" alt=""></a>
 								<div class="post-body">
 									<div class="post-category">
 										<a href="{{route('front-cate', ['id'=>$post->category->id, 'slug'=>$post->category->slug])}}">{{$post->category->name}}</a>
@@ -108,7 +108,7 @@
 									<h3 class="post-title title-sm"><a href="{{route('post-detail', ['id'=>$post->id, 'slug'=>$post->slug])}}">{{$post->title}}</a></h3>
 									<ul class="post-meta">
 										<li><a href="{{route('author', ['id'=>$post->users->id])}}">{{$post->users->name}}</a></li>
-										<li>{{date('F j, Y, H:i a', strtotime($post['created_at'])) }}</li>
+										<li>{{date('F j, Y', strtotime($post['created_at'])) }}</li>
 									</ul>
 								</div>
 							</div>

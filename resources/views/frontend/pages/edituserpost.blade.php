@@ -20,13 +20,13 @@
                             </div>
                             <div class="form-group">
                               <label>Tóm Tắt</label>
-                              <textarea name="description" class="form-control" rows="3">{{$posts->description}}</textarea>
+                              <textarea name="description" class="form-control" rows="3">{!!$posts->description!!}</textarea>
                             </div>
                             <div class="box box-info">
                               <div class="box-header">
                                 <label>Nội dung</label>
                               <div class="box-body pad">
-                                      <textarea class="ckeditor" id="editor1" name="content">{{$posts->content}}</textarea>
+                                      <textarea class="ckeditor" id="editor1" name="content">{!!$posts->content!!}</textarea>
                                       <script type="text/javascript">
                                         var editor = CKEDITOR.replace('description',{
                                           language:'vi',
@@ -40,7 +40,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Hình Ảnh</label>
-                                <img id="avatar" type="file" src="{{asset('upload/post/'.$posts->feature_image)}}" name="feature" class="form-control">
+                                <img id="avatar" style="height: auto;" type="file" src="{{asset('upload/post/'.$posts->feature_image)}}" name="feature" class="form-control">
                                 <input id="img" type="file" name="img" class="form-control hidden" onchange="changeImg(this)">
                             </div>
                             <div class="form-group">

@@ -68,7 +68,6 @@
             <div class="nav-tabs-custom">
               <ul class="nav nav-tabs">         
                 <li class="active"><a href="#settings" data-toggle="tab">Thông tin chi tiết</a></li>
-                <li><a href="#post" data-toggle="tab">Bài viết</a></li>
               </ul>
               <div class="tab-content">
                 
@@ -115,41 +114,6 @@
                 <!-- /.tab-pane -->
                 {{csrf_field()}}
         </form>
-            @if($posts)
-              @foreach($posts as $post)
-              <div class="tab-pane row" id="post">
-                  <div class="col-md-4">
-                    <img style="width=150px; height: 50px;" src="{{asset('upload/post/'.$post->feature_image)}}" alt="">
-                  </div>
-                  <!-- Post -->
-                  <div class="post col-md-8">
-                      <h3 style="font-size: 20px; color: black;">
-                          {{$post->title}}
-                      </h3>
-                      <p>{!!$post->content!!}</p>
-                    <div class="user-block">
-                      <img class="img-circle img-bordered-md" src="{{asset('upload/profile/'.$post->users->avatar)}}" alt="user image">
-                          <span class="username">
-                            <a href="#">{{$post->users->name}}</a>
-                          </span>
-                      <span class="description">@switch($post->status)
-                          @case(1) {{'Chờ phê duyệt'}} @break; 
-                          @case(2) {{'Không phê duyệt'}} @break;
-                          @case(3) {{'Đã phê duyệt'}} @break;
-                      @endswitch</span>
-                    </div>
-                    <!-- /.user-block -->
-                    
-                  </div>
-                  <!-- /.post -->
-                </div>
-                <!-- /.tab-pane -->
-              </div>
-              @endforeach
-              <!-- /.tab-content -->
-            @else
-              <input type="text" disabled class="br-primary" value="Chưa có bài viết nào">
-            @endif
           </div>
           <!-- /.nav-tabs-custom -->
         </div>

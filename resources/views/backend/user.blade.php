@@ -8,13 +8,7 @@
     <section class="content-header">
       <h1>
         User list
-        <small>advanced tables</small>
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Tables</a></li>
-        <li class="active">Data tables</li>
-      </ol>
     </section>
 
     <!-- Main content -->
@@ -33,10 +27,11 @@
                 <tr>
                   <th width="5%">#</th>
                   <th width="10%">Avatar</th>
-                  <th width="30%">Username</th>
-                  <th width="30%">Email</th>
+                  <th width="25%">Username</th>
+                  <th width="25%">Email</th>
                   <th width="10%">Role</th>
-                  <th width="10%">Ngày tham gia</th>
+                  <th width="15%">Ngày tham gia</th>
+                  <th width="10%">Bài viết</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -48,6 +43,7 @@
                   <td>{{$user->email}}</td>
                   <td>{{$user->role}}</td>
                   <td>{{$user->created_at}}</td>
+                  <td>{{$user->post->count()}}</td>
                 </tr>
                 @endforeach
                 </tbody>
@@ -55,10 +51,11 @@
                 <tr>
                   <th width="5%">#</th>
                   <th width="10%">Avatar</th>
-                  <th width="30%">Username</th>
-                  <th width="30%">Email</th>
+                  <th width="25%">Username</th>
+                  <th width="25%">Email</th>
                   <th width="10%">Role</th>
-                  <th width="10%">Ngày tham gia</th>
+                  <th width="15%">Ngày tham gia</th>
+                  <th width="10%">Bài viết</th>
                 </tr>
                 </tfoot>
               </table>

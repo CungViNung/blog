@@ -48,7 +48,7 @@ class ProfileController extends Controller
     }
     
     public function postAddPost(Request $request) {
-        $fileName = $request->feature->getClientOriginalName();
+        $fileName = $request->img->getClientOriginalName();
         $userPost = new Post;
         $userPost->title = $request->title;
         $userPost->slug = str_slug($request->title);
@@ -60,8 +60,8 @@ class ProfileController extends Controller
         $userPost->user_id = Auth::user()->id;
         $userPost->save();
         $userPost->tag()->sync($request->tags);
-        $request->feature->move('upload/post/', $fileName);
-        return redirect()->route('profile')->with('Thêm bài viết thành công, vui lòng đợi quản trị viên phê duyệt');
+        $request->img->move('upload/post/', $fileName);
+        return redirect()->route('profile')->with('success', 'Thêm bài viết thành công, vui lòng đợi quản trị viên phê duyệt');
 
     }
     public function getEdit($id) {
@@ -85,10 +85,11 @@ class ProfileController extends Controller
             $request->img->move('upload/post/', $img);
         }
         $posts->save();
-        return redirect()->route('profile')->with('Sửa bài viết thành công, vui lòng đợi quản trị viên phê duyệt');
+        return redirect()->route('profile')->with('success', 'Sửa bài viết thành công, vui lòng đợi quản trị viên phê duyệt');
     }
 
     public function getDelete($id) {
+        $posts = Post::find($id);   
         $posts::destroy($id);
         return redirect()->route('profile')->with('Xóa bài viết thành công');
     }

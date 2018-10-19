@@ -33,7 +33,7 @@ class RegisterController extends Controller
         if($validator->fails()) {
             return back()->withErrors($validator);
         }else {
-            $avatar = 'df.png';
+            $avatar = 'df.png'; 
             $user = new User;
             $user->name = $request->name;
             $user->email = $request->email;

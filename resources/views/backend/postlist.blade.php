@@ -8,13 +8,7 @@
     <section class="content-header">
       <h1>
         Post list
-        <small>advanced tables</small>
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Tables</a></li>
-        <li class="active">Data tables</li>
-      </ol>
     </section>
 
     <!-- Main content -->
@@ -41,7 +35,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                {{-- //foreach --}}
+                {{-- //foreach --}} 
                 @foreach($posts as $post)
                 <tr class="@switch($post->status)
                     @case(1) {{'bg-warning'}} @break; 

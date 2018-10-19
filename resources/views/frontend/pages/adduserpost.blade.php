@@ -40,8 +40,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Hình Ảnh</label>
-                                <img id="avatar" class="img-responsive" src="../../public/frontend/img/post-13.jpg" alt="Feature picture">
-                                <input id="img" type="file" name="img" class="form-control hidden" onchange="changeImg(this)">
+                                <input id="img" type="file" name="img">
                             </div>
                             <div class="form-group">
                                 <label>Tags</label>

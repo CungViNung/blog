@@ -52,20 +52,6 @@
 	</div>
 	<!-- /category widget -->
 
-	<!-- newsletter widget -->
-	<div class="aside-widget">
-		<div class="section-title">
-			<h2 class="title">Newsletter</h2>
-		</div>
-		<div class="newsletter-widget">
-			<form>
-				<p>Đăng ký để nhận tin mới nhất!</p>
-				<input class="input" name="newsletter" placeholder="Enter Your Email">
-				<button class="primary-button">Subscribe</button>
-			</form>
-		</div>
-	</div>
-	<!-- /newsletter widget -->
 
 	<!-- post widget -->
 	<div class="aside-widget">
