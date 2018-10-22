@@ -132,10 +132,8 @@
 									</div>
 								</div>
 								@endforeach
-							@else 
-								<div class="col-md-12">
+							@else
 									<h3 style="color: #EF4266; text-align: center; text-transform: uppercase;">Chưa có bình luận nào!<br/> hãy là người đầu tiên để lại bình luận</h3>
-								</div>
 							@endif
 							<!-- /comment -->
 						</div>
