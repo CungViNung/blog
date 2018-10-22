@@ -53,7 +53,7 @@
 						<!-- /post -->
 						@endforeach
 						<div class="section-row loadmore text-center">
-							<a href="#" class="primary-button">Load More</a>
+							{{$posts_cate->links()}}
 						</div>
 					@else 
 						<div class="section-row loadmore text-center">

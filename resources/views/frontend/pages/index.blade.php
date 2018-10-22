@@ -86,7 +86,7 @@
 					<!-- /row -->
 
 					<!-- row -->
-					<?php $catebf = $cate->sortBy('id')->take(3); ?>
+					<?php $catebf = App\Models\Category::whereIn('id', [6, 11, 17])->get(); ?>
 					@foreach($catebf as $cate)
 					<div class="row">
 						<div class="col-md-12">
@@ -160,7 +160,7 @@
 					?>
 					@if($post1)
 					<div class="post">
-						<a class="post-img" href="{{route('post-detail', ['id'=>$post1->id, 'slug'=>$post1->slug])}}"><img src="{{asset('upload/post/'.$post1->feature_image)}}" alt=""></a>
+						<a class="post-img" href="{{route('post-detail', ['id'=>$post1->id, 'slug'=>$post1->slug])}}"><img style="height: 250px;" src="{{asset('upload/post/'.$post1->feature_image)}}" alt=""></a>
 						<div class="post-body">
 							<div class="post-category">
 								<a href="{{route('front-cate', ['id'=>$post1->category->id, 'slug'=>$post1->category->slug])}}">{{$post1->category->name}}</a>

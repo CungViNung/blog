@@ -55,7 +55,11 @@ class ProfileController extends Controller
         $userPost->category_id = $request->category;
         $userPost->description = $request->description;
         $userPost->content = $request->content;
-        $userPost->status = 1;
+        if(Auth::user()->role == 'admin') {
+            $userPost->status = 3;
+        }else {
+            $userPost->status = 1;
+        }     
         $userPost->feature_image = $fileName;
         $userPost->user_id = Auth::user()->id;
         $userPost->save();
@@ -78,7 +82,11 @@ class ProfileController extends Controller
         $posts->category_id = $request->category;
         $posts->content = $request->content;
         $posts->tag()->sync($request->tags);
-        $posts->status = 1;
+        if(Auth::user()->role == 'admin') {
+            $posts->status = 3;
+        }else {
+            $posts->status = 1;
+        }    
         if($request->hasFile('img')) {
             $img = $request->img->getClientOriginalName();
             $posts->feature_image = $img;

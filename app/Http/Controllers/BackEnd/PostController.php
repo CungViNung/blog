@@ -11,7 +11,7 @@ use Auth;
 class PostController extends Controller
 {
     public function listPost() {
-        $posts = Post::paginate(20);
+        $posts = Post::orderBy('id', 'desc')->paginate(20);
         return view('backend.postlist', compact('posts'));
     }
 

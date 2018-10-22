@@ -11,7 +11,6 @@
 |
 */
 Route::get('test', function(){
-
 });
 Route::group(['prefix'=>'/'], function(){
     Route::get('', 'FrontendController@getIndex')->name('index');
