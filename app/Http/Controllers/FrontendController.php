@@ -51,7 +51,7 @@ class FrontendController extends Controller
 
     public function getAuthor($id) {
         $author = User::find($id);
-        $author_post = Post::where('status', 3)->where('user_id', $id)->orderBy('created_at', 'desc')->paginate(2);
+        $author_post = Post::where('status', 3)->where('user_id', $id)->orderBy('created_at', 'desc')->paginate(10);
         return view('frontend.pages.author', compact('author', 'author_post'));
     }
     public function getContact() {

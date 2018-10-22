@@ -1,5 +1,6 @@
 @extends('frontend.layout.single')
 @section('page-header')
+@section('title', 'Liên hệ')
 		<!-- PAGE HEADER -->
 		<div class="page-header">
 			<div class="container">

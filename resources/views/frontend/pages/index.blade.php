@@ -1,6 +1,6 @@
 @extends('frontend.layout.layout')
 @section('main')
-
+@section('title', 'CallieTT')
 	<!-- Main -->
 	<!-- SECTION -->
 	<div class="section">

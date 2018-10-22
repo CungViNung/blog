@@ -1,5 +1,6 @@
 @include('frontend.partials.head')
 @include('frontend.partials.header')
+@section('title') Đăng bài viết @endsection
 <div class="container lol">
     <div class="row">
         <div class="col-md-12">

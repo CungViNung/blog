@@ -1,5 +1,6 @@
 @extends('frontend.layout.single')
 @section('page-header')
+@section('title') {{$posts->title}} @endsection
 		<!-- PAGE HEADER -->
 		<div id="post-header" class="page-header">
 			<div class="page-header-bg" style="background-image: url('{{asset('upload/post/'.$posts->feature_image)}}');" data-stellar-background-ratio="0.5"></div>

@@ -1,5 +1,6 @@
 @extends('frontend.layout.single')
 @section('page-header')
+@section('title') {{Auth::user()->name}} | Author @endsection
 		<!-- PAGE HEADER -->
 		<div class="page-header">
 			<div class="container">

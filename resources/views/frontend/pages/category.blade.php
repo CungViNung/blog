@@ -1,5 +1,6 @@
 @extends('frontend.layout.single')
 @section('page-header')
+@section('title')Danh mục: {{$cates->name}} @endsection
 		<!-- PAGE HEADER -->
 		<div class="page-header">
 			<div class="page-header-bg" style="background-image: url('{{asset('upload/'.$cates->thumbnail)}}'); " data-stellar-background-ratio="0.5"></div>
