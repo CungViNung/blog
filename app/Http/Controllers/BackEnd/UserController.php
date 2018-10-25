@@ -5,20 +5,19 @@ namespace App\Http\Controllers\BackEnd;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
-use App\Models\Post;
 
 class UserController extends Controller
 {
-    public function getUser() {
-        $users = User::paginate(10);
-        return view('backend.user', compact('users', 'post'));
+    public function index() {
+        $users = $this->authorRepository->all();
+        return view('backend.user', compact('users'));
     }
 
-    public function getAddUser() {
+    public function create() {
         return view('backend.adduser');
     }
 
-    public function postAddUser(Request $request) {
+    public function store(Request $request) {
         $fileName = $request->img->getClientOriginalName();
         $user = new User;
         $user->name = $request->name;
@@ -32,14 +31,13 @@ class UserController extends Controller
         return redirect()->route('user-panel')->with('success', 'Thêm tài khoản thành công');
     }  
         
-    public function userDetail($id) { 
-        $user = User::find($id);
-        $posts = Post::where('user_id', $id)->get();
-        return view('backend.profile', compact('user', 'posts'));
+    public function edit($id) { 
+        $user = $this->authorRepository->find($id);
+        return view('backend.profile', compact('user'));
     }
 
-    public function editUser(Request $request, $id) {
-        $user = User::find($id);
+    public function update(Request $request, $id) {
+        $user = $this->authorRepository->find($id);
         $user->name = $request->name;
         $user->email = $request->email;
         $user->description = $request->description;
@@ -53,8 +51,8 @@ class UserController extends Controller
         return redirect()->route('user-panel')->with('success', 'Chỉnh sửa tài khoản thành công!');
     }
 
-    public function deleteUser($id) {
-        User::destroy($id);
+    public function delete($id) {
+        $this->authorRepository->delete($id);
         return redirect()->route('user-panel')->with('success', 'Xóa tài khoản thành công');
     }
 }

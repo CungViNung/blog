@@ -6,21 +6,22 @@ use Illuminate\Http\Request;
 use App\Http\Requests\AddPostRequest;
 use App\Http\Controllers\Controller;
 use Auth;
+use App\Models\Post;
 
 class PostController extends Controller
 {
-    public function listPost() {
+    public function index() {
         $posts = $this->postRepository->listPost();
         return view('backend.postlist', compact('posts'));
     }
 
-    public function getAddPost() {
+    public function create() {
         $categories = $this->cateRepository->all();
         $tags = $this->tagRepository->all();
         return view('backend.addpost', compact('categories', 'tags'));
     }
 
-    public function postAddPost(AddPostRequest $request) {
+    public function store(AddPostRequest $request) {
         $fileName = $request->feature->getClientOriginalName();
         $post = new Post;
         $post->title = $request->title;
@@ -42,14 +43,14 @@ class PostController extends Controller
         return redirect()->route('post-panel')->with('success', 'Thêm bài viết thành công!');
     }
 
-    public function getEditPost($id) {
+    public function edit($id) {
         $posts = $this->postRepository->find($id);
         $category = $this->cateRepository->all();
         $tags = $this->tagRepository->all();
         return view('backend.editpost', compact('posts', 'category', 'tags'));
     }
 
-    public function postEditPost(Request $request, $id) {
+    public function update(Request $request, $id) {
         $post = $this->postRepository->find($id);
         $post->title = $request->title;
         $post->slug = str_slug($request->title);
@@ -68,7 +69,7 @@ class PostController extends Controller
         return redirect()->route('post-panel')->with('success', 'Sửa bài viết thành công!');
     }
 
-    public function getDeletePost($id) {
+    public function delete($id) {
         $this->postRepository->delete($id);
         return redirect()->route('post-panel')->with('success', 'Xóa bài viết thành công!');
     }

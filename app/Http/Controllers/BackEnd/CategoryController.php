@@ -5,15 +5,16 @@ namespace App\Http\Controllers\BackEnd;
 use Illuminate\Http\Request;
 use App\Http\Requests\AddCategoryRequest;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 
 class CategoryController extends Controller
 {
-    public function listCategory() {
+    public function index() {
         $category = $this->cateRepository->all();
         return view('backend.category', compact('category'));
     } 
 
-    public function postAddCate(AddCategoryRequest $request) {
+    public function store(AddCategoryRequest $request) {
         $fileName = $request->thumbnail->getClientOriginalName();
         $category = new Category;
         $category->name = $request->name;
@@ -25,12 +26,12 @@ class CategoryController extends Controller
         return back()->with('success', 'Thêm danh mục thành công');
     }
     
-    public function getEditCate($id) {
+    public function edit($id) {
         $category = $this->cateRepository->find($id);
         return view('backend.editcategory', compact('category'));
     }
 
-    public function postEditCate(Request $request,$id) {
+    public function update(Request $request,$id) {
         $category = $this->cateRepository->find($id);
         $category->name = $request->name;
         $category->slug = str_slug($request->name);
@@ -45,8 +46,8 @@ class CategoryController extends Controller
 
     }
 
-    public function deleteCategory($id) {
+    public function delete($id) {
         $this->cateRepository->delete($id);
-        return back()->with('success', 'Xóa danh mục thành công');
+        return redirect()->route('category-panel')->with('success', 'Xóa danh mục thành công');
     }
 }

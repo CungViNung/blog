@@ -8,11 +8,11 @@ use Auth;
 
 class ProfileController extends Controller
 {
-    public function profile() {
+    public function index() {
         return view('frontend.pages.dashboard');
     }
 
-    public function editProfile(Request $request) {
+    public function info(Request $request) {
         $rules = [
             'name' => 'min:6|max:20',
             'email'=> 'email',
@@ -41,11 +41,11 @@ class ProfileController extends Controller
         return redirect()->route('profile')->with('success', 'Chỉnh sửa thông tin thành công!');
     }
 
-    public function getAddPost() {
+    public function create() {
         return view('frontend.pages.adduserpost');
     }
     
-    public function postAddPost(Request $request) {
+    public function store(Request $request) {
         $fileName = $request->img->getClientOriginalName();
         $userPost = new Post;
         $userPost->title = $request->title;
@@ -66,13 +66,13 @@ class ProfileController extends Controller
         return redirect()->route('profile')->with('success', 'Thêm bài viết thành công, vui lòng đợi quản trị viên phê duyệt');
 
     }
-    public function getEdit($id) {
+    public function edit($id) {
         $posts = $this->postRepository->find($id);
         $categories = $this->cateRepository->all();
         $tags = $this->tagRepository->all();
         return view('frontend.pages.edituserpost', compact('posts', 'categories', 'tags'));
     }
-    public function postEdit(Request $request, $id) {
+    public function update(Request $request, $id) {
         $posts = $this->postRepository->find($id);
         $posts->title = $request->title;
         $posts->slug = str_slug($request->title);
@@ -94,7 +94,7 @@ class ProfileController extends Controller
         return redirect()->route('profile')->with('success', 'Sửa bài viết thành công, vui lòng đợi quản trị viên phê duyệt');
     }
 
-    public function getDelete($id) {
+    public function delete($id) {
         $posts = $this->postRepository->delete($id);
         return redirect()->route('profile')->with('Xóa bài viết thành công');
     }

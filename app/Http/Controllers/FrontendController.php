@@ -8,19 +8,19 @@ use Session;
 
 class FrontendController extends Controller
 {   
-    public function getIndex() {
+    public function index() {
         $posts = $this->postRepository->findByField('status', '3');
         $cate = $this->cateRepository->all();
         return view('frontend.pages.index', compact('posts', 'cate'));
     }
 
-    public function getCate($id) {
+    public function category($id) {
         $cates = $this->cateRepository->find($id);
         $posts_cate = $this->postRepository->getPostCate($id);
         return view('frontend.pages.category', compact('cates', 'posts_cate'));
     }
 
-    public function getPostDetail($id) {
+    public function detail($id) {
         $posts = $this->postRepository->find($id);
 
         $postView = 'post_' . $id;
@@ -36,7 +36,7 @@ class FrontendController extends Controller
         return view('frontend.pages.blog-post', compact('posts', 'comments', 'related'));
     }
 
-    public function postComment(Request $request, $id) {
+    public function comment(Request $request, $id) {
         $data = [
             'com_email' => Auth::user()->email,
             'com_name' => Auth::user()->name,
@@ -48,12 +48,12 @@ class FrontendController extends Controller
         return back();
     }
 
-    public function getAuthor($id) {
+    public function author($id) {
         $author = $this->authorRepository->find($id);
         $author_post = $this->postRepository->authorPost($id);
         return view('frontend.pages.author', compact('author', 'author_post'));
     }
-    public function getContact() {
+    public function contact() {
         return view('frontend.pages.contact');
     }
     

@@ -12,21 +12,21 @@
 */
 Route::get('test', 'TestController@testt');
 Route::group(['prefix'=>'/'], function(){
-    Route::get('', 'FrontendController@getIndex')->name('index');
-    Route::get('category/{id}/{slug}', 'FrontendController@getCate')->name('front-cate');
-    Route::get('post/{id}/{slug}', 'FrontendController@getPostDetail')->name('post-detail'); 
-    Route::post('post/{id}/{slug}', 'FrontendController@postComment');
-    Route::get('author/{id}', 'FrontendController@getAuthor')->name('author'); 
-    Route::get('contact', 'FrontendController@getContact')->name('contact');
+    Route::get('', 'FrontendController@index')->name('index');
+    Route::get('category/{id}/{slug}', 'FrontendController@category')->name('front-cate');
+    Route::get('post/{id}/{slug}', 'FrontendController@detail')->name('post-detail'); 
+    Route::post('post/{id}/{slug}', 'FrontendController@comment');
+    Route::get('author/{id}', 'FrontendController@author')->name('author'); 
+    Route::get('contact', 'FrontendController@contact')->name('contact');
     
     Route::middleware('auth')->group(function(){
-        Route::get('/profile', 'ProfileController@profile')->name('profile');
-        Route::post('/profile', 'ProfileController@editProfile');
-        Route::get('/add', 'ProfileController@getAddPost')->name('useradd-post');
-        Route::post('/add', 'ProfileController@postAddPost');
-        Route::get('/edit/{id}', 'ProfileController@getEdit')->name('useredit-post');
-        Route::post('/edit/{id}', 'ProfileController@postEdit');
-        Route::get('delete/{id}', 'ProfileController@getDelete')->name('userdelete-post');
+        Route::get('/profile', 'ProfileController@index')->name('profile');
+        Route::post('/profile', 'ProfileController@show');
+        Route::get('/add', 'ProfileController@create')->name('useradd-post');
+        Route::post('/add', 'ProfileController@store');
+        Route::get('/edit/{id}', 'ProfileController@edit')->name('useredit-post');
+        Route::post('/edit/{id}', 'ProfileController@update');
+        Route::get('delete/{id}', 'ProfileController@delete')->name('userdelete-post');
     });
 });
 
@@ -42,57 +42,57 @@ Route::group(['namespace'=>'BackEnd'], function(){
         Route::post('/', 'RegisterController@postRegister');
     });
     //Logout
-    Route::get('logout', 'HomeController@getLogout')->name('logout');
+    Route::get('logout', 'HomeController@logout')->name('logout');
     //Dashboard
     Route::group(['prefix'=>'admin', 'middleware'=>'CheckLogout'], function() {
-        Route::get('dashboard', 'HomeController@getDashboard')->name('admin-panel');
+        Route::get('dashboard', 'HomeController@index')->name('admin-panel');
         //Users
         Route::group(['prefix'=>'user'], function(){
-            Route::get('/', 'UserController@getUser')->name('user-panel');
+            Route::get('/', 'UserController@index')->name('user-panel');
             //Add
-            Route::get('add', 'UserController@getAddUser')->name('add-user');
-            Route::post('add', 'UserController@postAddUser');
+            Route::get('add', 'UserController@create')->name('add-user');
+            Route::post('add', 'UserController@store');
             //Edit
-            Route::get('/detail/{id}', 'UserController@userDetail')->name('user-detail');
-            Route::post('/detail/{id}', 'UserController@editUser');
+            Route::get('/detail/{id}', 'UserController@edit')->name('user-detail');
+            Route::post('/detail/{id}', 'UserController@update');
             //Delete
-            Route::get('delete/{id}', 'UserController@deleteUser')->name('delete-user');
+            Route::get('delete/{id}', 'UserController@delete')->name('delete-user');
         });
 
         //Category
         Route::group(['prefix'=>'category'], function() {
-            Route::get('/', 'CategoryController@listCategory')->name('category-panel');
+            Route::get('/', 'CategoryController@index')->name('category-panel');
             //Add Category
-            Route::post('/', 'CategoryController@postAddCate');
+            Route::post('/', 'CategoryController@store');
             //Edit
-            Route::get('edit/{id}', 'CategoryController@getEditCate')->name('edit-cate');
-            Route::post('edit/{id}', 'CategoryController@postEditCate');
+            Route::get('edit/{id}', 'CategoryController@edit')->name('edit-cate');
+            Route::post('edit/{id}', 'CategoryController@update');
             //Delete
-            Route::get('delete/{id}', 'CategoryController@deleteCategory')->name('delete-cate');
+            Route::get('delete/{id}', 'CategoryController@delete')->name('delete-cate');
         });
 
         //Post
         Route::group(['prefix'=>'post'], function() {
-            Route::get('/', 'PostController@listPost')->name('post-panel');
+            Route::get('/', 'PostController@index')->name('post-panel');
             //Create post
-            Route::get('add', 'PostController@getAddPost')->name('add-post');
-            Route::post('add', 'PostController@postAddPost');
+            Route::get('add', 'PostController@create')->name('add-post');
+            Route::post('add', 'PostController@store');
             //Edit post
-            Route::get('edit/{id}', 'PostController@getEditPost')->name('edit-post');
-            Route::post('edit/{id}', 'PostController@postEditPost');
+            Route::get('edit/{id}', 'PostController@edit')->name('edit-post');
+            Route::post('edit/{id}', 'PostController@update');
             //Delete
-            Route::get('delete/{id}', 'PostController@getDeletePost')->name('delete-post');
+            Route::get('delete/{id}', 'PostController@delete')->name('delete-post');
         });
         //Tag
         Route::group(['prefix'=>'tag'], function(){
-            Route::get('/', 'TagController@listTag')->name('tag-panel');
+            Route::get('/', 'TagController@index')->name('tag-panel');
             //Add
-            Route::post('/', 'TagController@addTag');
+            Route::post('/', 'TagController@store');
             //Edit tag
-            Route::get('edit/{id}', 'TagController@getEditTag')->name('edit-tag');
-            Route::post('edit/{id}', 'TagController@postEditTag');
+            Route::get('edit/{id}', 'TagController@edit')->name('edit-tag');
+            Route::post('edit/{id}', 'TagController@update');
             //Delete tag
-            Route::get('delete/{id}', 'TagController@getDeleteTag')->name('delete-tag');
+            Route::get('delete/{id}', 'TagController@delete')->name('delete-tag');
         });
     });
 });

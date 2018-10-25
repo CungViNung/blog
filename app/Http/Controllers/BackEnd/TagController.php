@@ -8,12 +8,12 @@ use App\Models\Tag;
 
 class TagController extends Controller
 {
-    public function listTag() {
+    public function index() {
         $tags = $this->tagRepository->all();
         return view('backend.listtag', compact('tags'));
     }
 
-    public function addTag(Request $request) {
+    public function store(Request $request) {
         $tag = new Tag;
         $tag->name = $request->name;
         $tag->slug = str_slug($request->name);
@@ -21,16 +21,21 @@ class TagController extends Controller
         return back()->with('success', 'Thêm tag thành công!');
     }
 
-    public function getEditTag($id) {
+    public function edit($id) {
         $tags = $this->tagRepository->find($id);
         return view('backend.edittag', compact('tags'));
     }
 
-    public function postEditTag(Request $request, $id) {
+    public function update(Request $request, $id) {
         $tag = $this->tagRepository->find($id);
         $tag->name = $request->name;
         $tag->slug = str_slug($request->name);
         $tag->save();
         return redirect()->route('tag-panel')->with('success', 'Chỉnh sửa thành công!');
+    }
+
+    public function delete($id) {
+        $this->tagRepository->delete($id);
+        return redirect()->route('tag-panel')->with('success', 'Xóa thành công');
     }
 }

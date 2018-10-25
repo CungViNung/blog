@@ -8,14 +8,14 @@ use Auth;
 
 class HomeController extends Controller
 {
-    public function getDashboard() {
+    public function index() {
         $post = $this->postRepository->all();
         $cate = $this->cateRepository->all();
         $user = $this->authorRepository->all();
         return view('backend.index', compact('post', 'cate', 'user'));
     }
 
-    public function getLogout() {
+    public function logout() {
         Auth::logout();
         return redirect()->route('login');
     }
