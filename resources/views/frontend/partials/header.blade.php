@@ -58,25 +58,25 @@
                     <li class="has-dropdown">
                         <a href="#">hệ điều hành</a>
                         <div class="dropdown">
-							<div class="dropdown-body">
-								<ul class="dropdown-list">
-                                    @foreach($cates as $cate)
-                                    <li><a href="{{route('front-cate', ['id'=>$cate->id, 'slug'=>$cate->slug])}}">{{$cate->name}}</a></li>
-                                    @endforeach
-								</ul>
-							</div>
-						</div>
-                    </li>
-                    @foreach($acate as $cate)
-                    <li><a href="{{route('front-cate', ['id'=>$cate->id, 'slug'=>$cate->slug])}}">{{$cate->name}}</a></li>
-                    @endforeach
-                </ul>
-                <!-- /nav -->
-            </div>
+                         <div class="dropdown-body">
+                            <ul class="dropdown-list">
+                                @foreach($cates as $cate)
+                                <li><a href="{{route('front-cate', ['id'=>$cate->id, 'slug'=>$cate->slug])}}">{{$cate->name}}</a></li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                @foreach($acate as $cate)
+                <li><a href="{{route('front-cate', ['id'=>$cate->id, 'slug'=>$cate->slug])}}">{{$cate->name}}</a></li>
+                @endforeach
+            </ul>
+            <!-- /nav -->
         </div>
-        <!-- /Main Nav -->
-
-        
     </div>
-    <!-- /NAV -->
+    <!-- /Main Nav -->
+
+    
+</div>
+<!-- /NAV -->
 </header>

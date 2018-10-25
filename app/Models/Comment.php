@@ -8,6 +8,7 @@ class Comment extends Model
 {
     protected $table = 'comment';
     protected $primaryKey = 'id';
+    protected $fillable = ['com_email', 'com_name', 'com_content', 'post_id', 'user_id'];
 
     public function post() {
         return $this->belongsTo('App\Models\Post', 'post_id');

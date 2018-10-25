@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\{Post,Category, Tag};
-use App\User;
 use Validator;
 use Auth;
 
@@ -29,20 +27,20 @@ class ProfileController extends Controller
         $validator = Validator::make($request->all(), $rules, $msg);
         if($validator->fails()) {
             return back()->withErrors($validator);
-        }else {
-            $user = User::find(Auth::user()->id);
-            $user->name = $request->name;
-            $user->email = $request->email;
-            $user->description = $request->description;
-            if($request->hasFile('img')) {
-                $img = $request->img->getClientOriginalName();
-                $user->avatar = $img;
-                $request->img->move('upload/profile/', $img);
-            }
-            $user->update();
-            return redirect()->route('profile')->with('success', 'Chỉnh sửa thông tin thành công!');
         }
+        $user = $this->authorRepository->find(Auth::user()->id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->description = $request->description;
+        if($request->hasFile('img')) {
+            $img = $request->img->getClientOriginalName();
+            $user->avatar = $img;
+            $request->img->move('upload/profile/', $img);
+        }
+        $user->update();
+        return redirect()->route('profile')->with('success', 'Chỉnh sửa thông tin thành công!');
     }
+
     public function getAddPost() {
         return view('frontend.pages.adduserpost');
     }
@@ -69,13 +67,13 @@ class ProfileController extends Controller
 
     }
     public function getEdit($id) {
-        $posts = Post::find($id);
-        $categories = Category::all();
-        $tags = Tag::all();
+        $posts = $this->postRepository->find($id);
+        $categories = $this->cateRepository->all();
+        $tags = $this->tagRepository->all();
         return view('frontend.pages.edituserpost', compact('posts', 'categories', 'tags'));
     }
     public function postEdit(Request $request, $id) {
-        $posts = Post::find($id);
+        $posts = $this->postRepository->find($id);
         $posts->title = $request->title;
         $posts->slug = str_slug($request->title);
         $posts->description = $request->description;
@@ -97,8 +95,7 @@ class ProfileController extends Controller
     }
 
     public function getDelete($id) {
-        $posts = Post::find($id);   
-        $posts::destroy($id);
+        $posts = $this->postRepository->delete($id);
         return redirect()->route('profile')->with('Xóa bài viết thành công');
     }
 }

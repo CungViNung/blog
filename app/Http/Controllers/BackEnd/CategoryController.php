@@ -5,12 +5,11 @@ namespace App\Http\Controllers\BackEnd;
 use Illuminate\Http\Request;
 use App\Http\Requests\AddCategoryRequest;
 use App\Http\Controllers\Controller;
-use App\Models\Category;
 
 class CategoryController extends Controller
 {
     public function listCategory() {
-        $category = Category::paginate(5);
+        $category = $this->cateRepository->all();
         return view('backend.category', compact('category'));
     } 
 
@@ -27,12 +26,12 @@ class CategoryController extends Controller
     }
     
     public function getEditCate($id) {
-        $category = Category::find($id);
+        $category = $this->cateRepository->find($id);
         return view('backend.editcategory', compact('category'));
     }
 
     public function postEditCate(Request $request,$id) {
-        $category = Category::find($id);
+        $category = $this->cateRepository->find($id);
         $category->name = $request->name;
         $category->slug = str_slug($request->name);
         $category->parent = $request->parent;
@@ -47,7 +46,7 @@ class CategoryController extends Controller
     }
 
     public function deleteCategory($id) {
-        Category::destroy($id);
+        $this->cateRepository->delete($id);
         return back()->with('success', 'Xóa danh mục thành công');
     }
 }

@@ -10,8 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('test', function(){
-});
+Route::get('test', 'TestController@testt');
 Route::group(['prefix'=>'/'], function(){
     Route::get('', 'FrontendController@getIndex')->name('index');
     Route::get('category/{id}/{slug}', 'FrontendController@getCate')->name('front-cate');

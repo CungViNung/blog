@@ -9,7 +9,7 @@ use App\Models\Tag;
 class TagController extends Controller
 {
     public function listTag() {
-        $tags = Tag::paginate(10);
+        $tags = $this->tagRepository->all();
         return view('backend.listtag', compact('tags'));
     }
 
@@ -22,12 +22,12 @@ class TagController extends Controller
     }
 
     public function getEditTag($id) {
-        $tags = Tag::find($id);
+        $tags = $this->tagRepository->find($id);
         return view('backend.edittag', compact('tags'));
     }
 
     public function postEditTag(Request $request, $id) {
-        $tag = Tag::find($id);
+        $tag = $this->tagRepository->find($id);
         $tag->name = $request->name;
         $tag->slug = str_slug($request->name);
         $tag->save();

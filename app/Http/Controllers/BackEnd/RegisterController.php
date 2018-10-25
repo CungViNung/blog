@@ -32,16 +32,15 @@ class RegisterController extends Controller
         $validator = Validator::make($request->all(), $rule, $msg);
         if($validator->fails()) {
             return back()->withErrors($validator);
-        }else {
-            $avatar = 'df.png'; 
-            $user = new User;
-            $user->name = $request->name;
-            $user->email = $request->email;
-            $user->password = bcrypt($request->password);
-            $user->avatar = $avatar;
-            $user->save();
-            return redirect()->route('profile');
         }
+        $avatar = 'df.png'; 
+        $user = new User;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->avatar = $avatar;
+        $user->save();
+        return redirect()->route('profile');
         
     }
 }

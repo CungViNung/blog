@@ -5,19 +5,18 @@ namespace App\Http\Controllers\BackEnd;
 use Illuminate\Http\Request;
 use App\Http\Requests\AddPostRequest;
 use App\Http\Controllers\Controller;
-use App\Models\{Post, Category, Tag};
 use Auth;
 
 class PostController extends Controller
 {
     public function listPost() {
-        $posts = Post::orderBy('id', 'desc')->paginate(20);
+        $posts = $this->postRepository->listPost();
         return view('backend.postlist', compact('posts'));
     }
 
     public function getAddPost() {
-        $categories = Category::all();
-        $tags = Tag::all();
+        $categories = $this->cateRepository->all();
+        $tags = $this->tagRepository->all();
         return view('backend.addpost', compact('categories', 'tags'));
     }
 
@@ -44,14 +43,14 @@ class PostController extends Controller
     }
 
     public function getEditPost($id) {
-        $posts = Post::find($id);
-        $category = Category::all();
-        $tags = Tag::all();
+        $posts = $this->postRepository->find($id);
+        $category = $this->cateRepository->all();
+        $tags = $this->tagRepository->all();
         return view('backend.editpost', compact('posts', 'category', 'tags'));
     }
 
     public function postEditPost(Request $request, $id) {
-        $post = Post::find($id);
+        $post = $this->postRepository->find($id);
         $post->title = $request->title;
         $post->slug = str_slug($request->title);
         $post->description = $request->description;
@@ -70,7 +69,7 @@ class PostController extends Controller
     }
 
     public function getDeletePost($id) {
-        Post::destroy($id);
+        $this->postRepository->delete($id);
         return redirect()->route('post-panel')->with('success', 'Xóa bài viết thành công!');
     }
 }
