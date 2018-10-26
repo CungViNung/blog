@@ -38,7 +38,7 @@ class ProfileController extends Controller
             $request->img->move('upload/profile/', $img);
         }
         $user->update();
-        return redirect()->route('profile')->with('success', 'Chỉnh sửa thông tin thành công!');
+        return redirect()->route('profile')->with('success', trans('messages.profile.'));
     }
 
     public function create() {
@@ -63,7 +63,7 @@ class ProfileController extends Controller
         $userPost->save();
         $userPost->tag()->sync($request->tags);
         $request->img->move('upload/post/', $fileName);
-        return redirect()->route('profile')->with('success', 'Thêm bài viết thành công, vui lòng đợi quản trị viên phê duyệt');
+        return redirect()->route('profile')->with('success', trans('messages.profile.'));
 
     }
     public function edit($id) {
@@ -91,11 +91,11 @@ class ProfileController extends Controller
             $request->img->move('upload/post/', $img);
         }
         $posts->save();
-        return redirect()->route('profile')->with('success', 'Sửa bài viết thành công, vui lòng đợi quản trị viên phê duyệt');
+        return redirect()->route('profile')->with('success', trans('messages.profile.'));
     }
 
     public function delete($id) {
         $posts = $this->postRepository->delete($id);
-        return redirect()->route('profile')->with('Xóa bài viết thành công');
+        return redirect()->route('profile')->with('success', trans('messages.profile.'));
     }
 }

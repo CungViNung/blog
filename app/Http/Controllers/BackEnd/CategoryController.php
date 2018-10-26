@@ -23,7 +23,7 @@ class CategoryController extends Controller
         $category->parent = $request->parent;
         $category->save();
         $request->thumbnail->move('upload/', $fileName);
-        return back()->with('success', 'Thêm danh mục thành công');
+        return back()->with('success', trans('messages.cate.'));
     }
     
     public function edit($id) {
@@ -42,12 +42,12 @@ class CategoryController extends Controller
             $request->thumbnail->move('upload/', $thumb);
         }
         $category->save();
-        return redirect()->route('category-panel')->with('success', 'Sửa danh mục thành công!');
+        return redirect()->route('category-panel')->with('success', trans('messages.cate.'));
 
     }
 
     public function delete($id) {
         $this->cateRepository->delete($id);
-        return redirect()->route('category-panel')->with('success', 'Xóa danh mục thành công');
+        return redirect()->route('category-panel')->with('success', trans('messages.cate.'));
     }
 }

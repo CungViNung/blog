@@ -27,7 +27,7 @@ class LoginController extends Controller
             return redirect()->route('index');
         }
         else {
-            return back()->with('error', 'Tài khoản hoặc mật khẩu không đúng!');
+            return back()->with('error', trans('messages.login.'));
         }
     }
 }

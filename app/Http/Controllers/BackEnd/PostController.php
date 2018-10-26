@@ -40,7 +40,7 @@ class PostController extends Controller
         $post->save();
         $post->tag()->sync($request->input('tags'));
         $request->feature->move('upload/post/', $fileName);
-        return redirect()->route('post-panel')->with('success', 'Thêm bài viết thành công!');
+        return redirect()->route('post-panel')->with('success', trans('messages.post.'));
     }
 
     public function edit($id) {
@@ -66,11 +66,11 @@ class PostController extends Controller
         $post->status = $request->status;
         $post->hot = $request->hot;
         $post->save();
-        return redirect()->route('post-panel')->with('success', 'Sửa bài viết thành công!');
+        return redirect()->route('post-panel')->with('success', trans('messages.post.'));
     }
 
     public function delete($id) {
         $this->postRepository->delete($id);
-        return redirect()->route('post-panel')->with('success', 'Xóa bài viết thành công!');
+        return redirect()->route('post-panel')->with('success', trans('messages.post.'));
     }
 }

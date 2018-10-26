@@ -28,7 +28,7 @@ class UserController extends Controller
         $user->role = $request->role;
         $user->save();
         $request->img->move('upload/profile/', $fileName);
-        return redirect()->route('user-panel')->with('success', 'Thêm tài khoản thành công');
+        return redirect()->route('user-panel')->with('success', trans('messages.user.'));
     }  
         
     public function edit($id) { 
@@ -48,11 +48,11 @@ class UserController extends Controller
             $request->img->move('upload/profile/', $img);
         }
         $user->save();
-        return redirect()->route('user-panel')->with('success', 'Chỉnh sửa tài khoản thành công!');
+        return redirect()->route('user-panel')->with('success', trans('messages.user.'));
     }
 
     public function delete($id) {
         $this->authorRepository->delete($id);
-        return redirect()->route('user-panel')->with('success', 'Xóa tài khoản thành công');
+        return redirect()->route('user-panel')->with('success', trans('messages.user.'));
     }
 }
