@@ -19,7 +19,7 @@ class CheckLogin
         if(Auth::check()) {
             if(Auth::user()->role == 'admin'){
                 return redirect()->route('admin-panel');
-            }elseif(Auth::user()->role == 'mod') {
+            }elseif(Auth::user()->role == 'editor') {
                 return redirect()->route('admin-panel');
             }else {
                 return redirect()->route('index');
