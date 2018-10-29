@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Validator;
 use Auth;
+use App\Models\Post;
 
 class ProfileController extends Controller
 {
@@ -12,7 +13,7 @@ class ProfileController extends Controller
         return view('frontend.pages.dashboard');
     }
 
-    public function info(Request $request) {
+    public function show(Request $request) {
         $rules = [
             'name' => 'min:6|max:20',
             'email'=> 'email',
@@ -38,7 +39,7 @@ class ProfileController extends Controller
             $request->img->move('upload/profile/', $img);
         }
         $user->update();
-        return redirect()->route('profile')->with('success', trans('messages.profile.'));
+        return redirect()->route('profile')->with('success', trans('messages.profile.info'));
     }
 
     public function create() {
@@ -54,7 +55,7 @@ class ProfileController extends Controller
         $userPost->description = $request->description;
         $userPost->content = $request->content;
         if(Auth::user()->role == 'admin') {
-            $userPost->status = 3;
+            $userPost->status = 4;
         }else {
             $userPost->status = 1;
         }     
@@ -63,7 +64,7 @@ class ProfileController extends Controller
         $userPost->save();
         $userPost->tag()->sync($request->tags);
         $request->img->move('upload/post/', $fileName);
-        return redirect()->route('profile')->with('success', trans('messages.profile.'));
+        return redirect()->route('profile')->with('success', trans('messages.profile.store'));
 
     }
     public function edit($id) {
@@ -81,7 +82,7 @@ class ProfileController extends Controller
         $posts->content = $request->content;
         $posts->tag()->sync($request->tags);
         if(Auth::user()->role == 'admin') {
-            $posts->status = 3;
+            $posts->status = 4;
         }else {
             $posts->status = 1;
         }    
@@ -91,11 +92,11 @@ class ProfileController extends Controller
             $request->img->move('upload/post/', $img);
         }
         $posts->save();
-        return redirect()->route('profile')->with('success', trans('messages.profile.'));
+        return redirect()->route('profile')->with('success', trans('messages.profile.update'));
     }
 
     public function delete($id) {
         $posts = $this->postRepository->delete($id);
-        return redirect()->route('profile')->with('success', trans('messages.profile.'));
+        return redirect()->route('profile')->with('success', trans('messages.profile.delete'));
     }
 }

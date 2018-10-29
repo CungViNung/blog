@@ -81,9 +81,10 @@
           <div class="control-group">
             <div class="controls" style="margin: 15px">
               <select name="status" id="">
-                <option @if($posts->status == 1) selected @endif value="1">Chờ phê duyệt</option>
+                <option @if($posts->status == 1) selected @endif value="1">Chưa phê duyệt</option>
                 <option @if($posts->status == 2) selected @endif value="2">Không phê duyệt</option>
                 <option @if($posts->status == 3) selected @endif value="3">Đã phê duyệt</option>
+                <option @if($posts->status == 4) selected @endif value="4">Đăng</option>
               </select>
             </div>
           </div>

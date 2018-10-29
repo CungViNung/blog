@@ -27,11 +27,13 @@
           <div class="box box-primary" style="text-align: center;">
             <div class="box-body box-profile">
               <img style="width: 150px; height: 150px;" id="avatar" class="profile-user-img img-responsive img-circle" src="{{asset('upload/profile/'.$user->avatar)}}" alt="User profile picture">
-              <input required id="img" type="file" name="img" class="form-control hidden" onchange="changeImg(this)">
+              <input id="img" type="file" name="img" class="form-control hidden" onchange="changeImg(this)">
               <h3 class="profile-username text-center">{{$user->name}}</h3>
               <p class="text-muted text-center">{{$user->role}}</p>
+              @can('Permission.delete', Auth::user())
               <a href="{{route('delete-user', ['id'=>$user->id])}}" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa tài khoản này?')">Xóa tài khoản</a>
               <a href="#" class="btn btn-warning" onclick="return confirm('Bạn có chắc chắn muốn khóa tài khoản này?')">Khóa tài khoản</a>
+              @endcan
             </div>
             <!-- /.box-body -->
           </div>
@@ -94,22 +96,24 @@
                     <textarea class="form-control" name="description" id="inputDescription">{{$user->description}}</textarea>
                   </div>
                 </div>
+                @can('Permission.update', Auth::user())
                 <div class="form-group">
                   <label for="selectRole" class="col-sm-2 control-label">Role</label>
-
                   <div class="col-sm-10">
-                    <select name="role">
+                    <select name="role">                  
                       <option @if($user->role == 'admin') selected @endif value="admin">Admin</option>
+                      <option @if($user->role == 'editor') selected @endif value="editor">Editor</option>
                       <option @if($user->role == 'author') selected @endif value="author">Author</option>
                     </select>
                   </div>
                 </div>
+
                 <div class="form-group">
                   <div class="col-sm-offset-2 col-sm-10">
                     <button type="submit" class="btn btn-danger">Update</button>
                   </div>
                 </div>
-                
+                @endcan
               </div>
               <!-- /.tab-pane -->
               {{csrf_field()}}

@@ -134,6 +134,7 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
               <li><a href="{{route('tag-panel')}}"><i class="fa fa-circle-o"></i> Tag</a></li>
             </ul>
           </li>
+          @can('Permission.view', Auth::user())
           <li class="treeview">
             <a href="{{route('user-panel')}}">
               <i class="fa fa-users"></i>
@@ -144,10 +145,12 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
             </a>
             <ul class="treeview-menu">
               <li><a href="{{route('user-panel')}}"><i class="fa fa-circle-o"></i> Tất cả người dùng</a></li>
+              
               <li><a href="{{route('add-user')}}"><i class="fa fa-circle-o"></i> Thêm mới</a></li>
               <li><a href="{{route('user-detail', ['id'=>Auth::user()->id])}}"><i class="fa fa-circle-o"></i> Hồ sơ</a></li>
             </ul>
           </li>
+          @endcan
         </ul>
       </section>
       <!-- /.sidebar -->

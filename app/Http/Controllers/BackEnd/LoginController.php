@@ -15,6 +15,7 @@ class LoginController extends Controller
 
     public function postLogin(LoginRequest $request) {
         $admin = ['email'=>$request->email, 'password'=>$request->password, 'role'=>'admin'];
+        $mod = ['email'=>$request->email, 'password'=>$request->password, 'role'=>'mod'];
         $author = ['email'=>$request->email, 'password'=>$request->password, 'role'=>'author'];
         if($request->rememeber = 'Remember Me') {
             $remember = true;
@@ -25,9 +26,11 @@ class LoginController extends Controller
             return redirect()->route('admin-panel');
         }elseif(Auth::attempt($author, $remember)) {
             return redirect()->route('index');
+        }elseif(Auth::attempt($mod, $remember)) {
+            return redirect()->route('admin-panel');
         }
         else {
-            return back()->with('error', trans('messages.login.'));
+            return back()->with('error', trans('messages.login.fail'));
         }
     }
 }

@@ -95,7 +95,7 @@
 			</div>
 		</div>
 		<!-- post -->
-		<?php $posts = $cate->posts->where('status', 3)->sortByDesc('created_at')->take(3);
+		<?php $posts = $cate->posts->where('status', 4)->sortByDesc('created_at')->take(3);
 		?>
 		@foreach($posts as $post)
 		<div class="col-md-4">
@@ -155,7 +155,7 @@
 					<h2 class="title">{{$cat->name}}</h2>
 				</div>
 				<!-- post -->
-				<?php $posts = $cat->posts->where('status', 3)->sortByDesc('id')->take(4);
+				<?php $posts = $cat->posts->where('status', 4)->sortByDesc('id')->take(4);
 				$post1 = $posts->shift();
 				?>
 				@if($post1)

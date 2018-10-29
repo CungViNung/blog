@@ -27,7 +27,8 @@ return [
 	'profile' => [
 		'store' => 'Đăng bài viết thành công, vui lòng đợi phê duyệt!',
 		'update' => 'Sửa bài viết thành công, vui lòng đợi phê duyệt!',
-		'delete' => 'Xóa bài viết thành công!'
+		'delete' => 'Xóa bài viết thành công!',
+		'info' => 'Cập nhật thông tin thành công!'
 	],
 
 	'login' => [

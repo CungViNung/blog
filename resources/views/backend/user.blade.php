@@ -16,9 +16,11 @@
     <div class="row">
       <div class="col-xs-12">
         <div class="box">
+          @can('Permission.view', Auth::user())
           <div class="box-header">
             <a href="{{route('add-user')}}" class="btn btn-success">Thêm người dùng</a>
           </div>
+          @endcan
           @include('notification.error') 
           <!-- /.box-header -->
           <div class="box-body">

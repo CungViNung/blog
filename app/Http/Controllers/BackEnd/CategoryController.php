@@ -23,7 +23,7 @@ class CategoryController extends Controller
         $category->parent = $request->parent;
         $category->save();
         $request->thumbnail->move('upload/', $fileName);
-        return back()->with('success', trans('messages.cate.'));
+        return back()->with('success', trans('messages.cate.store'));
     }
     
     public function edit($id) {
@@ -42,12 +42,12 @@ class CategoryController extends Controller
             $request->thumbnail->move('upload/', $thumb);
         }
         $category->save();
-        return redirect()->route('category-panel')->with('success', trans('messages.cate.'));
+        return redirect()->route('category-panel')->with('success', trans('messages.cate.update'));
 
     }
 
     public function delete($id) {
         $this->cateRepository->delete($id);
-        return redirect()->route('category-panel')->with('success', trans('messages.cate.'));
+        return redirect()->route('category-panel')->with('success', trans('messages.cate.delete'));
     }
 }

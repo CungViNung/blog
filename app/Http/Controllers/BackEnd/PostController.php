@@ -19,6 +19,7 @@ class PostController extends Controller
         $categories = $this->cateRepository->all();
         $tags = $this->tagRepository->all();
         return view('backend.addpost', compact('categories', 'tags'));
+        return redirect()->route('admin-panel');
     }
 
     public function store(AddPostRequest $request) {
@@ -31,7 +32,7 @@ class PostController extends Controller
         $post->feature_image = $fileName;
         $post->hot = $request->hot;
         if(Auth::user()->role == 'admin') {
-            $post->status = 3;
+            $post->status = 4;
         }else {
             $post->status = 1;
         }
@@ -40,7 +41,7 @@ class PostController extends Controller
         $post->save();
         $post->tag()->sync($request->input('tags'));
         $request->feature->move('upload/post/', $fileName);
-        return redirect()->route('post-panel')->with('success', trans('messages.post.'));
+        return redirect()->route('post-panel')->with('success', trans('messages.post.store'));
     }
 
     public function edit($id) {
@@ -66,11 +67,11 @@ class PostController extends Controller
         $post->status = $request->status;
         $post->hot = $request->hot;
         $post->save();
-        return redirect()->route('post-panel')->with('success', trans('messages.post.'));
+        return redirect()->route('post-panel')->with('success', trans('messages.post.update'));
     }
 
     public function delete($id) {
         $this->postRepository->delete($id);
-        return redirect()->route('post-panel')->with('success', trans('messages.post.'));
+        return redirect()->route('post-panel')->with('success', trans('messages.post.delete'));
     }
 }

@@ -17,17 +17,17 @@ class PostRepository extends BaseRepository {
     }
 
     public function getPostCate($id) {
-		$result = $this->model->where('category_id', $id)->where('status', 3)->paginate();
+		$result = $this->model->where('category_id', $id)->where('status', 4)->paginate();
 		return $result;
 	}
 
 	public function getRelated($id) {
-		$result = $this->model->where('status', 3)->take(3);
+		$result = $this->model->where('status', 4)->take(3);
 		return $result;
 	}
 
     public function authorPost($id) {
-        $result = $this->model->where('status', 3)->where('user_id', $id)->orderBy('created_at', 'desc')
+        $result = $this->model->where('status', 4)->where('user_id', $id)->orderBy('created_at', 'desc')
         ->paginate();
         return $result;
     }

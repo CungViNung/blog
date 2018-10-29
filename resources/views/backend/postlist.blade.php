@@ -40,7 +40,8 @@
                 <tr class="@switch($post->status)
                   @case(1) {{'bg-warning'}} @break; 
                   @case(2) {{'bg-danger'}} @break;
-                  @case(3) {{'bg-success'}} @break;    
+                  @case(3) {{'bg-success'}} @break;
+                  @case(4) {{'bg-primary'}} @break;    
                   @endswitch">
                   <td>{{$post->id}}</td>
                   <td><a href="{{route('edit-post', ['id'=>$post->id])}}">{{$post->title}}</a></td>
@@ -53,6 +54,7 @@
                     @case(1) {{'Chờ phê duyệt'}} @break; 
                     @case(2) {{'Không phê duyệt'}} @break;
                     @case(3) {{'Đã phê duyệt'}} @break;
+                    @case(4) {{'Đã đăng bài viết'}} @break;
                   @endswitch</td>
                   <td>{{$post->created_at}}</td>
                 </tr>

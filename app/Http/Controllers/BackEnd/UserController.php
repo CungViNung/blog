@@ -5,21 +5,33 @@ namespace App\Http\Controllers\BackEnd;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
+use Auth;
 
 class UserController extends Controller
 {
     public function index() {
-        $users = $this->authorRepository->all();
-        return view('backend.user', compact('users'));
+        if(Auth::user()->can('Permission.view')) {
+            $users = $this->authorRepository->all();
+            return view('backend.user', compact('users'));
+        }
+        return redirect()->route('admin-panel');
     }
 
     public function create() {
-        return view('backend.adduser');
+        if(Auth::user()->can('Permission.create')) {
+            return view('backend.adduser');
+        }
+        return redirect()->route('admin-panel');
     }
 
     public function store(Request $request) {
-        $fileName = $request->img->getClientOriginalName();
         $user = new User;
+        if($request->hasFile('img')) {
+            $fileName = $request->img->getClientOriginalName();
+            $request->img->move('upload/profile/', $fileName);
+        } else {
+            $fileName = 'df.png';
+        }
         $user->name = $request->name;
         $user->avatar = $fileName;
         $user->email = $request->email;
@@ -27,8 +39,7 @@ class UserController extends Controller
         $user->description = $request->description;
         $user->role = $request->role;
         $user->save();
-        $request->img->move('upload/profile/', $fileName);
-        return redirect()->route('user-panel')->with('success', trans('messages.user.'));
+        return redirect()->route('user-panel')->with('success', trans('messages.user.store'));
     }  
         
     public function edit($id) { 
@@ -48,11 +59,11 @@ class UserController extends Controller
             $request->img->move('upload/profile/', $img);
         }
         $user->save();
-        return redirect()->route('user-panel')->with('success', trans('messages.user.'));
+        return redirect()->route('user-panel')->with('success', trans('messages.user.update'));
     }
 
     public function delete($id) {
         $this->authorRepository->delete($id);
-        return redirect()->route('user-panel')->with('success', trans('messages.user.'));
+        return redirect()->route('user-panel')->with('success', trans('messages.user.delete'));
     }
 }

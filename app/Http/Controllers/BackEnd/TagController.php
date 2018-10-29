@@ -18,7 +18,7 @@ class TagController extends Controller
         $tag->name = $request->name;
         $tag->slug = str_slug($request->name);
         $tag->save();
-        return back()->with('success', trans('messages.tag.'));
+        return back()->with('success', trans('messages.tag.store'));
     }
 
     public function edit($id) {
@@ -31,11 +31,11 @@ class TagController extends Controller
         $tag->name = $request->name;
         $tag->slug = str_slug($request->name);
         $tag->save();
-        return redirect()->route('tag-panel')->with('success', trans('messages.tag.'));
+        return redirect()->route('tag-panel')->with('success', trans('messages.tag.update'));
     }
 
     public function delete($id) {
         $this->tagRepository->delete($id);
-        return redirect()->route('tag-panel')->with('success', trans('messages.tag.'));
+        return redirect()->route('tag-panel')->with('success', trans('messages.tag.delete'));
     }
 }

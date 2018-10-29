@@ -5,11 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use Session;
-
+use App\Models\Post;
 class FrontendController extends Controller
 {   
     public function index() {
-        $posts = $this->postRepository->findByField('status', '3');
+        $posts = $this->postRepository->findByField('status', '4');
         $cate = $this->cateRepository->all();
         return view('frontend.pages.index', compact('posts', 'cate'));
     }

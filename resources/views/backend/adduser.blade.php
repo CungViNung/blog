@@ -20,7 +20,7 @@
           <!-- Profile Image -->
           <div class="box box-primary">
             <div class="box-body box-profile">
-              <img id="avatar" class="profile-user-img img-responsive img-circle" style="width: 150px; position: relative;" name="img" src="../../public/frontend/img/df.png" alt="User profile picture">
+              <img id="avatar" class="profile-user-img img-responsive img-circle" style="width: 150px; position: relative;" name="img" src="df.png" alt="User profile picture">
               <input id="img" type="file" name="img" class="form-control hidden" onchange="changeImg(this)">
             </div>
             <!-- /.box-body -->
@@ -71,6 +71,7 @@
                 <div class="col-sm-10">
                   <select name="role">
                     <option value="admin">Admin</option>
+                    <option value="editor" selected>Editor</option>
                     <option value="author" selected>Author</option>
                   </select>
                 </div>

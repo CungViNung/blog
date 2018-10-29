@@ -70,6 +70,7 @@
                         @case(1) {{'bg-warning'}} @break
                         @case(2) {{'bg-danger'}} @break
                         @case(3) {{'bg-success'}} @break
+                        @case(4) {{'bg-primary'}} @break
                         @endswitch">
                         <td>{{$post->id}}</td>
                         <td><a href="{{route('useredit-post', ['id'=>$post->id])}}">{{$post->title}}</a></td>
@@ -78,9 +79,10 @@
                             {{$tags->name}}
                         @endforeach</td>
                         <td>@switch($post->status)
-                            @case(1) {{'Chờ phê duyệt'}} @break; 
-                            @case(2) {{'Không phê duyệt'}} @break;
-                            @case(3) {{'Đã phê duyệt'}} @break;
+                            @case(1) {{'Chờ phê duyệt'}} @break
+                            @case(2) {{'Không phê duyệt'}} @break
+                            @case(3) {{'Đã phê duyệt'}} @break
+                            @case(4) {{'Đã đăng'}} @break
                         @endswitch</td>
                         <td>{{date('d.m.Y', strtotime($post['created_at']))}}</td>
                     </tr>      
