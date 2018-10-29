@@ -43,8 +43,11 @@ class UserController extends Controller
     }  
         
     public function edit($id) { 
-        $user = $this->authorRepository->find($id);
-        return view('backend.profile', compact('user'));
+        if(Auth::user()->can('Permission.view')) {
+            $user = $this->authorRepository->find($id);
+            return view('backend.profile', compact('user'));
+        }
+        return redirect()->route('admin-panel');
     }
 
     public function update(Request $request, $id) {
