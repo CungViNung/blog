@@ -1,6 +1,6 @@
 @extends('frontend.layout.single')
 @section('page-header')
-@section('title') {{Auth::user()->name}} | Author @endsection
+@section('title') {{$author->name}} | Author @endsection
 <!-- PAGE HEADER -->
 <div class="page-header">
 	<div class="container">
@@ -8,7 +8,7 @@
 			<div class="col-md-offset-1 col-md-10 text-center">
 				<div class="author">
 					<img style="width: 100px; height: 100px;" class="author-img center-block" src="{{asset('upload/profile/'.$author->avatar)}}" alt="">
-					<h1 class="text-uppercase">{{$author->name}}</h1>
+					<h1 class="text-uppercase">{{$author->name}}</h1> 
 					<p class="lead">{{$author->description}}</p>
 					<ul class="author-social">
 						<li><a href="#"><i class="fa fa-facebook"></i></a></li>

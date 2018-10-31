@@ -92,7 +92,7 @@
 			@foreach($related as $lq)
 			<div class="col-md-4">
 				<div class="post post-sm">
-					<a class="post-img" href="blog-post.html"><img src="{{asset('upload/post/'.$lq->feature_image)}}" alt=""></a>
+					<a class="post-img" href="{{route('post-detail', ['id'=>$lq->id, 'slug'=>$lq->slug])}}"><img src="{{asset('upload/post/'.$lq->feature_image)}}" alt=""></a>
 					<div class="post-body">
 						<div class="post-category">
 							<a href="{{route('front-cate', ['id'=>$lq->category->id, 'slug'=>$lq->category->slug])}}">{{$lq->category->name}}</a>
